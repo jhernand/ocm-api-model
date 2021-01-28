@@ -101,4 +101,24 @@ resource Cluster {
 		target UpgradePolicies
 	}
 
+	// Hibernates the cluster.
+	method Hibernate {
+		// When the cluster should start being hibernated.
+		in From Date
+
+		// When the cluster should automatically be resumed.
+		in To Date
+
+		// The place where the cluster is hibernated.
+		out Place String
+	}
+
+	// Resume a hibernated cluster.
+	method Resume {
+		// Kick the cluster hard if it refuses to hibernate.
+		in Kick Boolean
+
+		// Flag indicating if the cluster is still sleepy.
+		out Sleepy Boolean
+	}
 }
